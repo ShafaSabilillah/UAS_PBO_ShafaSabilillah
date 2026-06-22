@@ -17,9 +17,10 @@ class KaryawanTetap extends Karyawan {
         $this->opsiSahamId = $sahamId;
     }
 
-    // Hanya mengimplementasikan metode abstrak tanpa logika bisnis tambahan
+    // Method Overriding: Hitung Gaji Bersih
+    // Rumus: (Hari Kerja * Gaji Dasar) + Tunjangan Kesehatan
     public function hitungGajiBersih() {
-        return $this->gajiDasarPerHari;
+        return ($this->hariKerjaMasuk * $this->gajiDasarPerHari) + $this->tunjanganKesehatan;
     }
 
     public function tampilkanProfilKaryawan() {
@@ -27,8 +28,10 @@ class KaryawanTetap extends Karyawan {
         echo "ID Karyawan       : " . $this->id_karyawan . "\n";
         echo "Nama              : " . $this->nama_karyawan . "\n";
         echo "Departemen        : " . $this->departemen . "\n";
+        echo "Hari Kerja Masuk  : " . $this->hariKerjaMasuk . " Hari\n";
         echo "Tunjangan Kes.    : " . $this->tunjanganKesehatan . "\n";
         echo "Opsi Saham ID     : " . $this->opsiSahamId . "\n";
+        echo "Gaji Bersih       : Rp " . number_format($this->hitungGajiBersih(), 2, ',', '.') . "\n";
         echo "---------------------------------\n";
     }
 }

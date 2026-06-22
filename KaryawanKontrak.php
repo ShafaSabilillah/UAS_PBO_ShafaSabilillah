@@ -17,9 +17,10 @@ class KaryawanKontrak extends Karyawan {
         $this->agensiPenyalur = $agensi;
     }
 
-    // Hanya mengimplementasikan metode abstrak tanpa logika bisnis tambahan
+    // Method Overriding: Hitung Gaji Bersih
+    // Rumus: Hari Kerja * Gaji Dasar Per Hari
     public function hitungGajiBersih() {
-        return $this->gajiDasarPerHari; 
+        return $this->hariKerjaMasuk * $this->gajiDasarPerHari; 
     }
 
     public function tampilkanProfilKaryawan() {
@@ -27,8 +28,10 @@ class KaryawanKontrak extends Karyawan {
         echo "ID Karyawan       : " . $this->id_karyawan . "\n";
         echo "Nama              : " . $this->nama_karyawan . "\n";
         echo "Departemen        : " . $this->departemen . "\n";
+        echo "Hari Kerja Masuk  : " . $this->hariKerjaMasuk . " Hari\n";
         echo "Durasi Kontrak    : " . $this->durasiKontrakBulan . " Bulan\n";
         echo "Agensi Penyalur   : " . $this->agensiPenyalur . "\n";
+        echo "Gaji Bersih       : Rp " . number_format($this->hitungGajiBersih(), 2, ',', '.') . "\n";
         echo "---------------------------------\n";
     }
 }

@@ -17,9 +17,10 @@ class KaryawanMagang extends Karyawan {
         $this->sertifikatKampusMerdeka = $sertifikat;
     }
 
-    // Hanya mengimplementasikan metode abstrak tanpa logika bisnis tambahan atau perkalian
+    // Method Overriding: Hitung Gaji Bersih
+    // Rumus: (Hari Kerja * Gaji Dasar) * 0.80 (Potongan 20%)
     public function hitungGajiBersih() {
-        return $this->gajiDasarPerHari;
+        return ($this->hariKerjaMasuk * $this->gajiDasarPerHari) * 0.80;
     }
 
     public function tampilkanProfilKaryawan() {
@@ -27,8 +28,10 @@ class KaryawanMagang extends Karyawan {
         echo "ID Karyawan       : " . $this->id_karyawan . "\n";
         echo "Nama              : " . $this->nama_karyawan . "\n";
         echo "Departemen        : " . $this->departemen . "\n";
-        echo "Uang Saku Bulanan : " . $this->uangSakuBulanan . "\n";
-        echo "Sertifikat MSIB   : " . $this->sertifikatKampusMerdeka . "\n";
+        echo "Hari Kerja Masuk  : " . $this->hariKerjaMasuk . " Hari\n";
+        echo "Sertifikat MSIB   : " . ($this->sertifikatKampusMerdeka ? $this->sertifikatKampusMerdeka : "Tidak Ada") . "\n";
+        echo "Catatan Potongan  : 20% Biaya Program Orientasi/Pelatihan\n";
+        echo "Gaji Bersih       : Rp " . number_format($this->hitungGajiBersih(), 2, ',', '.') . "\n";
         echo "---------------------------------\n";
     }
 }
